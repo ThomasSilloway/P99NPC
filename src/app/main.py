@@ -1,5 +1,6 @@
 import logging
 
+from src.app.app import App
 from src.app.app_logger import AppLogger
 from src.app.commandline_args import CommandlineArgs
 from src.app.config import Config
@@ -17,7 +18,8 @@ config = Config(env)
 
 def main():
     logging.info("Starting main thread")
-
+    app = App()
+    app.run()
 
 try:
     main()
