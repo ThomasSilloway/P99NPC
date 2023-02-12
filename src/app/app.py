@@ -1,11 +1,15 @@
+import logging
 import time
 from ahk import AHK
 
 from src.app.eq_commands.eq_chat import EQChat
+from src.app.eq_logs.eq_log_parser import EQLogParser
 from src.app.state_machine.actions.action_say import ActionSay
+from src.app.thread.eq_log_thread import EQLogThread
 
 
 class App:
+    PROCESS_TIME_INTERVAL = 0.5
 
     def __init__(self, config):
         self.config = config
@@ -17,12 +21,16 @@ class App:
 
         self.eq_chat = EQChat(ahk, win)
 
+        self.eq_log_thread = EQLogThread(self.config)
+
     def run(self):
 
-        time.sleep(0.1)
+        while True:
+            time.sleep(self.PROCESS_TIME_INTERVAL)
 
-        action = ActionSay(self, None, "I don't have time for that right now.")
-        action.start()
+            new_event = self.eq_log_thread.try_get_next_log_event()
+            if new_event is not None:
+                new_event.run(self)
 
         # Run who command
         # while True:
