@@ -1,13 +1,30 @@
+import json
+import logging
 import re
 from src.app.eq_logs.eq_log_event_hail import EQLogEventHail
+from src.app.eq_logs.eq_log_event_quest_keyword import EQLogEventQuestKeyword
 
 
 class EQLogParser:
 
     def __init__(self):
         self.events = [
-            EQLogEventHail,
+            EQLogEventHail()
         ]
+
+        self.populate_quest_events()
+
+    def populate_quest_events(self):
+        # Open the JSON file
+        with open(f".\\content\\quests.json", 'r') as f:
+            # Load the array from the JSON file
+            quest_list = json.load(f)
+
+        for quest in quest_list:
+            new_event = EQLogEventQuestKeyword(quest["keyword"], quest["response"], quest["emote"])
+            self.events.append(new_event)
+
+    # Script:
 
     # regex match?
     def try_create_event_for_line_raw(self, line):
@@ -22,10 +39,9 @@ class EQLogParser:
         for new_event in self.events:
             triggers = new_event.get_triggers()
             for trigger in triggers:
-                # return value m is either None of an object with information about the RE search
                 match = re.match(trigger, trunc_line)
                 if match:
-                    return new_event(trunc_line, match)
+                    return new_event.set_parsed_data(trunc_line, match)
 
         # only executes if loops did not return already
         return None

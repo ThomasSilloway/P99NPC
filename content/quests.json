@@ -1,0 +1,22 @@
+[
+  {
+    "keyword": "Legacy",
+    "emote": "/nod",
+    "response": "Only the bravest, hardened sssouls will be able to thrive in the Legacy of Ik. If you [join] us, you will swear an oath of blood and iron. You will embrace the finality of death, use only the items that fate grants you, and never stray from our lands."
+  },
+  {
+    "keyword": "join",
+    "emote": "/smirk",
+    "response": "The dark path awaits you, <name>. You must whisper to me the dark and forbidden [words] that are known only to the chosen few. Speak the words now, and know that they will bind you to our guild for all time."
+  },
+  {
+    "keyword": "words",
+    "emote": "/raise",
+    "response": "The blood of our enemies will run like rivers, and the power of the Legacy will be unmatched. Seek out a human named Larry, yesss... others may call him LevelUpLarry. Learn from him the words of power that will bind you to our cause. The Legacy will rise, and with it, our enemies will fall. Cazic Thule will be pleased..."
+  },
+  {
+    "keyword": "FOR IK!",
+    "emote": "/grin",
+    "response": "You have proven your worth, <name>. Together, we will bring fear and despair to all who oppose us."
+  }
+]
