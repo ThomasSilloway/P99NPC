@@ -30,12 +30,12 @@ class AppLogger:
             os.remove(log_file)
 
         # Configure the logging
-        logging.basicConfig(filename=log_file_name, level=logging.DEBUG,
+        logging.basicConfig(filename=log_file_name, level=logging.INFO,
                             format="%(asctime)s [%(threadName)s] %(levelname)s: %(message)s", datefmt="%M:%S")
 
         # Add a handler to write log messages to the console
         console = logging.StreamHandler()
-        console.setLevel(logging.DEBUG)
+        console.setLevel(logging.INFO)
         formatter = logging.Formatter("%(levelname)s: %(message)s")
         console.setFormatter(formatter)
         logging.getLogger().addHandler(console)
