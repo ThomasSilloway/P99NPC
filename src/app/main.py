@@ -21,6 +21,7 @@ def main():
     app = App(config)
     app.run()
 
+
 try:
     main()
 except KeyboardInterrupt:
