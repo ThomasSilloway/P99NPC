@@ -18,7 +18,7 @@ config = Config(env)
 
 def main():
     logging.info("Starting main thread")
-    app = App()
+    app = App(config)
     app.run()
 
 try:

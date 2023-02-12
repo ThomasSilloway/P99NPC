@@ -17,3 +17,7 @@ runas /user:tcsil "cmd /K python .\\src\\app\\main.py"
 Where tcsil is your PC username (Found in C:\Users)
 
 idk, magic, but it works!!
+
+Config contains a setting for the window to detect to activate for EQ.  You can find it by using the list windows command that's commented out
+
+Autohotkeydocs: https://github.com/spyoungtech/ahk
