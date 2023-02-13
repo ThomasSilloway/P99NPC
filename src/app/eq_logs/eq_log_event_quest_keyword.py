@@ -17,12 +17,15 @@ class EQLogEventQuestKeyword(EQLogEvent):
             f'^(\w+) says, \'.*{self.keyword}.*\'',
         ]
 
-    def run(self, app):
-        their_name = self.match.group(1)
-        if their_name == "You":
-            return
-        self.respond(app, their_name)
+    def get_player_name(self):
+        return self.match.group(1)
 
+    def should_trigger(self):
+        # if self.get_player_name() == "You":
+        #     return False
+        return True
+
+    # TODO: Rework this
     def respond(self, app, their_name):
 
         response = self.response.replace("<name>", their_name)
