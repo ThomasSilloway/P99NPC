@@ -27,3 +27,4 @@ class EQChat:
         if self.win.active:
             # Run who command to make sure text input is cleared out
             self.ahk.send("/{enter}")
+

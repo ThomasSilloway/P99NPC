@@ -12,6 +12,12 @@ class EQLogFile:
     """
     class to encapsulate log file operations
     """
+    lines_to_ignore = [
+        "You are hungry",
+        "You are out of food and drink",
+        "You are thirsty",
+        "out of character",
+    ]
 
     def __init__(self, config, events: EQLogEvents):
 
@@ -53,10 +59,17 @@ class EQLogFile:
             # read a line
             line = self.file.readline()
             if line:
-                logging.info(line)
-                new_event = self.event_parser.parse(line)
-                if new_event:
-                    self.events.push_log_event(new_event)
+                if self.is_relevant_line(line):
+                    logging.info(line)
+                    new_event = self.event_parser.parse(line)
+                    if new_event:
+                        self.events.push_log_event(new_event)
 
             time.sleep(0.1)
+
+    def is_relevant_line(self, line):
+        for ignore_string in self.lines_to_ignore:
+            if ignore_string in line:
+                return False
+        return True
 

@@ -3,13 +3,15 @@ import logging
 import re
 from src.app.eq_logs.eq_log_event_hail import EQLogEventHail
 from src.app.eq_logs.eq_log_event_quest_keyword import EQLogEventQuestKeyword
+from src.app.eq_logs.eq_log_event_who import EQLogEventWho
 
 
 class EQLogParser:
 
     def __init__(self):
         self.events = [
-            EQLogEventHail()
+            EQLogEventHail(),
+            EQLogEventWho(),
         ]
 
         self.populate_quest_events()
