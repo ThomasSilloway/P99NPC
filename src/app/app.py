@@ -37,7 +37,7 @@ class App:
             # Or states and actions subscribing to certain events and determining what to do
 
             new_event = self.eq_log_thread.try_get_next_log_event()
-            if new_event and new_event.should_trigger():
+            if new_event and new_event.should_trigger(self):
                 self.event_manager.trigger(new_event)
 
         # Run who command

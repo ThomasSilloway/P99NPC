@@ -20,17 +20,7 @@ class EQLogEventQuestKeyword(EQLogEvent):
     def get_player_name(self):
         return self.match.group(1)
 
-    def should_trigger(self):
-        # if self.get_player_name() == "You":
-        #     return False
+    def should_trigger(self, app):
+        if self.get_player_name() == "You":
+            return False
         return True
-
-    # TODO: Rework this
-    def respond(self, app, their_name):
-
-        response = self.response.replace("<name>", their_name)
-
-        action = ActionTarget(app, None, their_name)
-        action.start()
-        action = ActionSay(app, None, response, self.emote)
-        action.start()

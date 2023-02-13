@@ -11,7 +11,7 @@ class EQLogEventWho(EQLogEvent):
             '^\[(\d+) (\w+)\] (\w+) \((\w+)\)',
         ]
 
-    def should_trigger(self):
+    def should_trigger(self, app):
         return True
 
     def get_level(self):
