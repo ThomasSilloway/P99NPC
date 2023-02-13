@@ -20,7 +20,8 @@ class EQChat:
 
     def send_command(self, command):
         self.clear_chat()
-        self.ahk.send(command + "{enter}")
+        if self.win.active:
+            self.ahk.send(command + "{enter}")
 
     def clear_chat(self):
         if self.win.active:
